@@ -1,0 +1,251 @@
+/* 
+    Document   : front
+    Created on : 20 лист 2013, 10:10:29
+    Author     : Shadow
+    Description:
+        Purpose of the stylesheet follows.
+*/
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+html, body {
+  font-size: 100%;
+  padding: 0;
+  margin: 0;
+}
+body {
+  background: #f2f2f2;
+  color: #444;
+  font-family: "Open Sans","Helvetica Neue","Helvetica",Helvetica,Arial,sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  line-height: 1;
+  font-size: 14px;
+  position: relative;
+}
+
+.left { float: left; }
+.right { float: right; }
+
+#wrapper{
+    min-height:100%;
+    background:#f2f2f2;
+/*            margin:0 auto -100px;*/
+    min-width:960px;
+    -webkit-box-shadow:0 0 5px rgba(0,0,0,0.6);
+    -moz-box-shadow:0 0 5px rgba(0,0,0,0.6);
+    box-shadow:0 0 5px rgba(0,0,0,0.6);
+}
+
+/* header */
+header {
+  width: 100%;
+  background: #1f2020;
+  height: 65px;
+}
+header > #logo {
+  background: none repeat scroll 0 0 rgba(0, 0, 0, 0.3);
+  float: left;
+  margin: 0;
+}
+
+#logo a {
+  background-color: #00a0df;
+  color: #fff;
+  display: table-cell;
+  font-size: 1.8rem;
+  height: 50px;
+  line-height: 0;
+  overflow: hidden;
+  text-align: center;
+  transition-duration: 0.35s;
+  transition-property: width;
+  transition-timing-function: ease-out;
+  vertical-align: middle;
+  width: 150px;
+  position: relative;
+  z-index: 900;
+}
+
+#logo .block-logo-img {
+  display: inline-block;
+  width: 130px;
+  height: 40px;
+  background: url('../image/smartel/logo/logo_140x42.png');
+  background-size: 100% 100%;
+  margin-top: 5px;
+}
+
+#logo .logo-desc {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 300;
+  line-height: 13px;
+  position: relative;
+  margin-top: 0px;
+  padding-bottom: 7px;
+}
+/* -- phones -- */
+#hedare-phones { 
+    padding: 20px;
+}
+#hedare-phones {
+  display: inline-block;
+  position: relative;
+  float: right;
+  width: 300px;
+}
+
+#hedare-phones > a {
+  text-decoration: none;
+  font-size: 22px;
+  line-height: 22px;
+  font-weight: 300;
+  color: #FFF;
+}
+
+#hedare-phones > ul.list-phones {
+  display: none;
+  margin-top: 10px;
+  background: #464646;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.17);
+  border-radius: 0px 0px 5px 5px;
+  -webkit-border-radius: 0px 0px 5px 5px;
+  -moz-border-radius: 0px 0px 5px 5px;
+  overflow: hidden;
+  position: relative;
+  z-index: 999;
+}
+ul.list-phones > li {
+  width: auto;
+  padding: 10px 20px;
+  display: block;
+  position: relative;
+  z-index: 998;
+}
+
+ul.list-phones > li > a {
+  text-decoration: none;
+  color: #fff;
+  padding: 0px 0px 3px 0px;
+  border-bottom: 1px dotted #00A1DF;
+  text-align: center;
+}
+
+/* Main Menu */
+#main-menu {
+    display: inline-block;
+    position: relative;
+    margin: 10px 20px;
+}
+
+#main-menu ul {
+    margin: 0px;
+    padding: 0px;
+}
+
+#main-menu ul > li {
+    display: block;
+    float: left;
+    list-style: none;
+}
+
+#main-menu > ul > li > a {
+  border: 0 none;
+  color: #fff;
+  display: block;
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1;
+  position: relative;
+  text-transform: uppercase;
+}
+
+#main-menu > ul > li:hover,
+#main-menu > ul > li > a:hover {
+    background: none;
+    text-decoration: none;
+    color: #00a0df;
+}
+
+/* -- CONTENT -- */
+.boxSlider { min-height: 272px; }
+.promos {
+  background-color: #000;
+}
+
+.promos a.promo-item {
+    display: inline-block;
+    background: #000 url("../image/smartel/promos-left-bg.jpg");
+    background-size: cover;
+    padding: 10px;
+    margin: 24px;
+}
+
+.promos a.promo-item:hover {
+    background: nome;
+}
+.promos .promo-item label {
+  font-size: 16px;
+  line-height: 1.25rem;
+  margin-bottom: 8px;
+  margin-top: 8px;
+  font-weight: 300;
+  color: #fff;
+}
+.promo-list li {
+    list-style: none;
+    margin-bottom: 10px;
+}
+.promo-list li > span {
+    color: #b9c6d5;
+}
+
+.promos a.promo-item div,
+.promos a.promo-item img {
+    width: 50%;
+}
+/* -- FOOTER -- */
+footer {
+    background-color: #fff; 
+}
+footer .top-links {
+  font-size: 1.2em;
+  line-height: 1em;
+  padding: 20px 0px;
+  text-align: center;
+}
+
+footer .top-links span {
+  color: #666;
+  font-size: 1.25em;
+  line-height: 1.75em;
+  margin: 12px 0 4px;
+}
+
+footer .top-links ul { 
+    padding: 0px;
+    margin: 0px;
+}
+footer .top-links ul > li {
+    list-style: none;
+/*    margin-top: 10px;*/
+}
+footer .top-links ul > li > a {
+    font-size: 13px;
+    line-height: 1.71429;
+}
+
+footer #copyright {
+  border-top: 1px solid #ccc;
+  color: #666;
+  font-size: 0.75em;
+  line-height: 1.25em;
+  margin: 0;
+  padding-bottom: 24px;
+  padding-top: 24px;
+  text-align: center;
+}

@@ -1,0 +1,265 @@
+/* popUP */
+.popUp {
+    background-color: #f3f3f3;
+/*    box-shadow: 0 0 25px 5px #999;*/
+    color: #4d4f5b;
+/*    display: none;*/
+    width: 400px;
+}
+
+.popUp .title, .popUp > a {
+    color: #16a89e;
+}
+
+.popUp .info > a {
+    text-decoration: underline;
+}
+
+.popUp .title {
+    width: 100%;
+    margin-bottom: 0px;
+}
+
+.popUp .title, .popUp .info {
+    text-align: center;
+    padding-left: 20px;
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+
+.popUp .info {
+    padding-right: 20px;
+}
+
+.popUp .title {
+    padding-right: 52px;
+}
+
+.popUp .title {
+    font-size: 36px;
+    line-height: 36px;
+    min-height: 54px;
+}
+
+.popUp .title.gold {
+    background: #4d4f5b;
+    color: #f5ac43;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.popUp .title > b {
+    font-family: "Open Sans";
+    font-size: 56px;
+    font-weight: 600;
+}
+
+.popUp .info {
+    font-size: 17px;
+    line-height: 1.1em;
+}
+
+.popUp .info > a {
+    font-weight: bold;
+    color: #68bcb5;
+    text-decoration: none;
+}
+
+.popUp .info > a:hove,
+.popUp .info > a:active,
+.popUp .info > a:focus {
+    text-decoration: none;
+}
+
+.popUp .close {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+}
+
+.popUp .close,
+.popUp .b-close {
+    background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPCAYAAAA71pVKAAAACXBIWXMAAAsTAAALEwEAmpwYAAABNmlDQ1BQaG90b3Nob3AgSUNDIHByb2ZpbGUAAHjarY6xSsNQFEDPi6LiUCsEcXB4kygotupgxqQtRRCs1SHJ1qShSmkSXl7VfoSjWwcXd7/AyVFwUPwC/0Bx6uAQIYODCJ7p3MPlcsGo2HWnYZRhEGvVbjrS9Xw5+8QMUwDQCbPUbrUOAOIkjvjB5ysC4HnTrjsN/sZ8mCoNTIDtbpSFICpA/0KnGsQYMIN+qkHcAaY6addAPAClXu4vQCnI/Q0oKdfzQXwAZs/1fDDmADPIfQUwdXSpAWpJOlJnvVMtq5ZlSbubBJE8HmU6GmRyPw4TlSaqo6MukP8HwGK+2G46cq1qWXvr/DOu58vc3o8QgFh6LFpBOFTn3yqMnd/n4sZ4GQ5vYXpStN0ruNmAheuirVahvAX34y/Axk/96FpPYgAAACBjSFJNAAB6JQAAgIMAAPn/AACA6AAAUggAARVYAAA6lwAAF2/XWh+QAAAAzElEQVR42qyTsRHCMAxFX7xBVoARpFVghKSjhRUyAhmBFVjhMwsDUIgCwwWwA3egOzey35Nt2ZhZa2ariOCbYbdYRAQJOAIHd+/4EO5ueb3cvU3AmOf2c4IJ2AKDpHOSNAIOnLNgWwBXE7CXNAA0EVEyj5L6nO+Affb0uRhPcEkAnGrgG1wQUAMB0mtC0gnYABcggG0J/G/lwpn7uTamGijpXq0qSAVwd29TvoMRWE/ewUPQmFk3147KznaShsbMBNgcWBAALPnlV10HACwiuaGZ5ZweAAAAAElFTkSuQmCC") no-repeat scroll center center transparent !important;
+    border-radius: 2px;
+    cursor: pointer;
+    height: 15px;
+    opacity: 0.3;
+    position: absolute;
+    right: 25px;
+    top: 23px;
+    transition: all 0.3s ease-out 0s;
+    width: 15px;
+}
+
+
+.popUp .close:hover,
+.popUp .close:active,
+.popUp .close:focus {
+    opacity: 1;
+}
+.popUp div {
+/*    padding-bottom: 24px;*/
+}
+
+/* --- // popUp form --- */
+.popUp form > div {
+    margin-top: 20px; 
+}
+.block-popup-form input {
+    display: inline-block;
+    text-align: left;
+    
+    background: #fff;
+    border: 0px;
+    padding: 9px 13px;
+    font-size: 15px;
+    height: 37px;
+    
+    border-radius: 4px 4px;
+    -webkit-border-radius:  4px 4px;
+    -moz-border-radius: 4px 4px;
+}
+form.block-popup-form div.error { 
+    display: none; 
+}
+.block-popup-form label#email-error { 
+    display: inline-block;
+}
+.block-popup-form #email-error {
+    color: #b54a58;
+    font-size: 13px;
+    font-weight: bold;
+    margin: 5px 0px 0px;
+    width: 100%;
+}
+
+.popUp form button.btn, .block-popUp-close {
+    font-size: 18px;
+}
+
+/* ---- // form checkout --- */
+#box-form-checkout {
+    background-color: rgba(255, 255, 255, 0.85);
+    border-radius: 16px;
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+    transition: all 0.6s ease-out 0s !important;
+    width: 400px;
+}
+
+#form-checkout {
+    padding: 20px;
+}
+
+#form-checkout > section {
+    display: inline-block;
+    width: 100%;
+    height: auto;
+    letter-spacing: normal;
+    padding: 10px 0px;
+}
+#form-checkout > section:last-child {
+    padding-bottom: 0px;
+}
+#form-checkout > section p {
+    font-size: 24px;
+    line-height: 34px;
+    margin: 0px;
+    padding: 0px;
+}
+
+#form-checkout > section[for="or"] {
+    padding: 0px;
+}
+
+#form-checkout label {
+    font-size: 24px;
+    line-height: 34px;
+    text-align: left;
+    
+    display: inline-block;
+    float: left;
+    margin-right: 10px;
+    position: relative;
+    vertical-align: middle;
+    
+    color: #333;
+    font-family: "Open Sans",sans-serif;
+    font-weight: 100;
+    letter-spacing: normal;
+    width: 100px;
+    margin-bottom: 0px;
+}
+#form-checkout input.email,
+#form-checkout input.phone {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border: 1px solid #c2c2c2;
+    border-radius: 4px;
+    color: #333;
+    display: block;
+    float: left;
+    font-size: 14px;
+    height: 34px;
+    left: auto;
+    letter-spacing: normal;
+    line-height: 30px;
+    margin: 0px;
+    min-width: 164px;
+    padding: 0 8px;
+    text-align: left;
+    transition: all 0.25s ease-out 0s;
+    width: 164px;
+}
+#form-checkout input.email {}
+#form-checkout input.phone
+
+/* ------------------- // END POPUP -------------------------- */
+.button-red {
+    background-clip: padding-box;
+    border: medium none;
+    border-radius: 4px;
+    font-family: "Open Sans",Helvetica,Arial,sans-serif;
+    font-size: 18px;
+    font-weight: 300;
+    padding: 8px 15px;
+    -moz-user-select: none;
+    background-image: none;
+    cursor: pointer;
+    display: inline-block;
+    line-height: 1.42857;
+    margin-bottom: 0;
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
+    text-decoration: none;
+}
+
+.button-red.disabled, 
+.button-red[disabled], 
+fieldset[disabled] .button-red, 
+.button-red.disabled:hover, 
+.button-red[disabled]:hover, 
+fieldset[disabled] .button-red:hover, 
+.button-red.disabled:focus, 
+.button-red[disabled]:focus, 
+fieldset[disabled] 
+.button-red:focus, 
+.button-red.disabled:active, 
+.button-red[disabled]:active, 
+fieldset[disabled] .button-red:active, 
+.button-red.disabled.active, 
+.button-red.active[disabled], 
+fieldset[disabled] .button-red.active {
+    box-shadow: none;
+    cursor: not-allowed;
+    opacity: 0.65;
+    pointer-events: none;
+    background-color: #cf4757;
+    color: white;
+}
+
+.button-red:hover,
+.button-red:active,
+.button-red:focus {
+    text-decoration: none;
+}
