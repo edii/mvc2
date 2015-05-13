@@ -2,7 +2,7 @@
 
 class HomeController extends \Controller
 {
-	public $layout = 'test'; //'column1'
+	public $layout = 'smartel'; //'column1'
 
 	private $_model;
         private $_msection = false;
@@ -14,10 +14,10 @@ class HomeController extends \Controller
         
         /* --- // page content --- */
         public function actionContent() {
-            $this->layout( 'test' );
+            $this->layout( 'smartel' );
             $secID = false;
             if($section = \init::app() -> getTreeSection() and is_array( $section )) {
-                $secID = $section['SectionId'];
+                    $secID = $section['SectionId'];
             }
             $_content = '';
             if(isset($this -> _msection -> getSectionID( $secID )['SectionContent'])) 
@@ -89,7 +89,7 @@ class HomeController extends \Controller
 
 	public function actionIndex()
 	{
-            $this->layout( 'test' );
+            $this->layout( 'smartel' );
             
 //            $_db = new CDatabase( 'main', NULL);
 //            
@@ -122,9 +122,9 @@ class HomeController extends \Controller
             $_connector = $_db->getConnection();
             $_dbdefionitions = $_db->getDatabaseDefinition();
             
-            $front_section = $_connector -> query("SELECT s.SectionID, s.hidden, s.SectionAlias, s.SectionInMenu, s.SectionParentID, s.SectionName, "
-                                            . "s.SectionTitle, s.SectionDescription, s.SectionKeywords, s.SectionUrl "
-                                            . " FROM `section` AS s WHERE SectionType = 'front'", $args, $options)-> fetchAll();
+            $front_section = $_connector -> query("SELECT s.id, s.hidden, s.alias, s.inMenu, s.parentID, s.name, "
+                                            . "s.title, s.description, s.keywords, s.url "
+                                            . " FROM `section` AS s WHERE type = 'front'", $args, $options)-> fetchAll();
             
             $this->render('menu', array(
                 'front_section'=>$front_section,

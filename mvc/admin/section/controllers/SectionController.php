@@ -32,7 +32,7 @@ class SectionController extends \Controller
                 endforeach;
             }
             
-            $_tree = \init::app() -> getCTree()-> set( $_items, array('id' => 'SectionID', 'p_id' => 'SectionParentID') ) -> get();
+            $_tree = \init::app() -> getCTree()-> set( $_items, array('id' => 'id', 'p_id' => 'parentID') ) -> get();
             
             $validate = $this -> _users -> getRight();
             if(!$validate)
