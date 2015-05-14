@@ -1,6 +1,6 @@
 <?php
 
-class ProductsController extends \Controller
+class ProductsCategoryController extends \Controller
 {
 	public $layout = 'dashboard';
 
@@ -21,7 +21,7 @@ class ProductsController extends \Controller
            if(empty($this -> _mproducts))
                $this -> _mproducts = \init::app() -> getModels('products/mproducts');
            if(empty($this -> _mproducts_categories))
-               $this -> _mproducts_categories = \init::app() -> getModels('products_categories/mproductsCategories');
+               $this -> _mproducts_categories = \init::app() -> getModels('products_categories/mproducts_categories');
         }
         
         public function actionIndex() {
@@ -34,8 +34,9 @@ class ProductsController extends \Controller
             if(!$validate)
                 $this -> redirect('/'._request_uri.'/home/login');
             
+            
             $this->render('list', array(
-                'products' => $this->_mproducts ->getProducts(),
+                'categories' => $this -> _mproducts_categories ->getCategories(),
             ));
             
 //            
@@ -57,7 +58,7 @@ class ProductsController extends \Controller
             
             $_id = \init::app() ->getRequest() -> getParam('id'); 
             $_method = \init::app() ->getRequest() -> getParam('method');
-            $_product = \init::app() ->getRequest() -> getParam('product');
+            $_category = \init::app() ->getRequest() -> getParam('category');
             if(empty($_method) or !isset($_method)) {
                 // fatal error ( rediract listings owners )
                $_error = true;
@@ -69,8 +70,8 @@ class ProductsController extends \Controller
                  if(!(int)$_id) {
                     $_error = true;
                  } else {
-                     if(is_array($_product) and count($_product) > 0) {
-                        $this->_mproducts ->save(true, $_product);
+                     if(is_array($_category) and count($_category) > 0) {
+                        $this -> _mproducts_categories ->save(true, $_category);
                      }
                  }
                  
@@ -78,10 +79,10 @@ class ProductsController extends \Controller
                 // add
                 $_title = 'Добавить';               
                 if(!(int)$_id) {
-                    if(is_array($_product) and count($_product) > 0) {
-                        $_product['UserID'] = 'root';
-                        $_product['OwnerID'] = 'root';
-                        $this->_mproducts ->save(true, $_product);
+                    if(is_array($_category) and count($_category) > 0) {
+                        $_category['UserID'] = 'root';
+                        $_category['OwnerID'] = 'root';
+                        $this -> _mproducts_categories ->save(true, $_category);
                     }
                 }
                 
@@ -93,7 +94,8 @@ class ProductsController extends \Controller
                 $this->render('form',array(
                     'title'   => $_title,
                     'sections_actual' => \init::app()->getTreeSection(),
-                    'listing'   => $this->_mproducts -> getProductID($_id),
+                    'listing'   => $this -> _mproducts_categories -> getCategoryID($_id),
+                    '_categories' => $this -> _mproducts_categories -> getCategoriesTree(false),
                     'validate'  => $validate,
                     '_session'  =>  $this -> _users -> getValidate() -> getSession()
                 ));
@@ -105,7 +107,7 @@ class ProductsController extends \Controller
             $this->layout( false );
      
             $_id = \init::app() ->getRequest() -> getParam('id');
-            $this -> _mproducts -> delete(array('id' => $_id));
+            $this -> _mproducts_categories -> delete(array('id' => $_id));
             
             $this ->redirect('/'._request_uri.'/section');
         }
