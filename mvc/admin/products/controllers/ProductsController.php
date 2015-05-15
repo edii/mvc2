@@ -27,9 +27,10 @@ class ProductsController extends \Controller
         public function actionIndex() {
         }
         public function actionList() {
+            
             $_lang = \init::app() -> getLanguage();
             
-            $this->layout( false );
+            // $this->layout( false );
             $validate = $this -> _users -> getRight();
             if(!$validate)
                 $this -> redirect('/'._request_uri.'/home/login');

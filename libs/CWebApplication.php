@@ -360,6 +360,7 @@ class CWebApplication extends \CApplication {
 			$oldController=$this->_controller;
 			$this->_controller=$controller;
 			$controller->init();
+                        echo "action = ".$actionID;
 			$controller->run($actionID);
 			$this->_controller=$oldController;
                         
@@ -398,9 +399,9 @@ class CWebApplication extends \CApplication {
                     
                     // load section
                     if($_section = $this->getTreeSection() and is_array($_section) and count($_section) > 0 and $_box == false) {
-                        if(isset($_section['Controller']) and !empty($_section['Controller'])) {
-                            $_sec_action = (isset($_section['Action']) and !empty($_section['Action'])) ? $_section['Action'] : 'index';
-                            $route = $_section['Controller'].'/'.$_sec_action; 
+                        if(isset($_section['controller']) and !empty($_section['controller'])) {
+                            $_sec_action = (isset($_section['action']) and !empty($_section['action'])) ? $_section['action'] : 'index';
+                            $route = $_section['controller'].'/'.$_sec_action; 
                         }
                         // load params
                         if($_params = $this->getTreeParams() and isset($route) and !empty($route)) {
@@ -416,14 +417,13 @@ class CWebApplication extends \CApplication {
                 else if(($route=trim($route,'/'))==='') {
                     $route = $owner->defaultController;
                 } else if( _detected == 'admin' and trim($route,'/') !== '' ) {
-                    
+                        
                         // load section
                         if($_section = $this->getTreeSection() and is_array($_section) and count($_section) > 0 and $_box == false) {
                             
-                            
-                            if(isset($_section['Controller']) and !empty($_section['Controller'])) {
-                                $_sec_action = (isset($_section['Action']) and !empty($_section['Action'])) ? $_section['Action'] : 'index';
-                                $route = $_section['Controller'].'/'.$_sec_action; 
+                            if(isset($_section['controller']) and !empty($_section['controller'])) {
+                                $_sec_action = (isset($_section['action']) and !empty($_section['action'])) ? $_section['action'] : 'index';
+                                $route = $_section['controller'].'/'.$_sec_action; 
                             }
                             // load params
                             if($_params = $this->getTreeParams() and isset($route) and !empty($route)) {
@@ -484,7 +484,7 @@ class CWebApplication extends \CApplication {
                             $className=ucfirst($id).'Controller';
                             $classFile=$basePath.DIRECTORY_SEPARATOR.$className.'.php';
 
-                            //echo "route = ".$classFile; die('stop');
+                            // echo "route = ".$classFile; die('stop');
 
                             if($owner->controllerNamespace!==null)
                                     $className=$owner->controllerNamespace.'\\'.$className;
@@ -518,7 +518,7 @@ class CWebApplication extends \CApplication {
         
         protected function parseAlies($route) {
             $_type = \init::app() -> _getPanel();
-            $_owner_code = \init::app() -> getOwner() -> getOwnerCode();
+            $_ownerID = \init::app() -> getOwner() -> getOwnerID();
             $_db = \init::app() -> getDBConnector();
             
             if(!strpos($route,'/')){
@@ -551,14 +551,11 @@ class CWebApplication extends \CApplication {
                                                  action, 
                                                  url,
                                                  name
-                                                 
                                           FROM section 
                                           WHERE url IN (".$_route.") 
-                                                            AND OwnerID = '".$_owner_code."'
+                                                            AND OwnerID = ".$_ownerID."
                                                             AND type = '".$_type."'    
                                                             AND hidden = 0" ) -> fetchAll(); 
-            
-            
             
                 if(is_array($section) and count($section) > 0) {
                     $_trees = array();

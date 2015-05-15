@@ -64,9 +64,9 @@
                 </div>    
                 
                 <?php 
-                    echo "<pre>";
-                    var_dump( $_categories );
-                    echo "</pre>"; die();
+//                    echo "<pre>";
+//                    var_dump( $_categories );
+//                    echo "</pre>"; die();
                 ?>
                 
                 <!-- default params -->

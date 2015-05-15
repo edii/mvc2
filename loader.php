@@ -1,4 +1,7 @@
 <?php
+ //ini_set('display_errors', 1);
+ //error_reporting(-1);
+
 header('Content-Type: text/html; charset=utf-8');
 
 defined('BEGIN_TIME') or define('BEGIN_TIME', microtime(true));

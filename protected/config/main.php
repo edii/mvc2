@@ -31,7 +31,7 @@ return [
         'db' => [
             'main' => [
                 'driver' => 'mysql',
-                'database' => 'mvc',
+                'database' => 'mvc2',
                 'username' => 'root',
                 'password' => 'password',
                 'host' => 'localhost',

@@ -56,12 +56,12 @@
                             <input type="hidden" name="method" value="<?= ($this->getParam('method') == 'edit') ? 'edit': 'add' ?>" />
                             <!-- edit -->
                             <?php if((int)$this->getParam('id')): ?>
-                                <input type="hidden" name="section[SectionID]" value="<?= $this->getParam('id') ?>" />
-                                <input type="hidden" name="section[TimeSaved]" value="<?= date('Y-m-d H:i:s') ?>" />
+                                <input type="hidden" name="section[id]" value="<?= $this->getParam('id') ?>" />
+                                <input type="hidden" name="section[timeSaved]" value="<?= date('Y-m-d H:i:s') ?>" />
                             <?php endif; ?>
                             <!-- add -->
                             <?php if($this->getParam('method') == 'add'): ?>
-                                <input type="hidden" name="section[TimeCreated]" value="<?= date('Y-m-d H:i:s') ?>" />
+                                <input type="hidden" name="section[timeCreated]" value="<?= date('Y-m-d H:i:s') ?>" />
                             <?php endif; ?>     
                                 
                             
@@ -69,7 +69,7 @@
                                 <div class="span12">
                                     <div class="row-fluid">
                                         <label class="form-label span4" for="normal">SectionAlias</label>
-                                        <input class="span8" id="normalInput" type="text" name="section[SectionAlias]" value="<?= (isset($listing)) ? $listing['SectionAlias'] : '' ?>" />
+                                        <input class="span8" id="normalInput" type="text" name="section[alias]" value="<?= (isset($listing)) ? $listing['alias'] : '' ?>" />
                                     </div>
                                 </div>
                             </div>
@@ -97,7 +97,7 @@
                                 <div class="span12">
                                     <div class="row-fluid">
                                         <label class="form-label span4" for="normal">SectionType</label>
-                                        <input class="span8" id="normalInput" type="text" name="section[SectionType]" value="<?= (isset($listing)) ? $listing['SectionType'] : '' ?>" />
+                                        <input class="span8" id="normalInput" type="text" name="section[type]" value="<?= (isset($listing)) ? $listing['type'] : '' ?>" />
                                     </div>
                                 </div>
                             </div>
@@ -126,7 +126,7 @@
                                         ?>
                                         
                                         <label class="form-label span4" for="normal">SectionParentID</label>
-                                        <input class="span8" id="normalInput" type="text" name="section[SectionParentID]" value="<?= (isset($listing)) ? $listing['SectionParentID'] : '' ?>" />
+                                        <input class="span8" id="normalInput" type="text" name="section[parentID]" value="<?= (isset($listing)) ? $listing['parentID'] : '' ?>" />
                                     </div>
                                 </div>
                             </div>
@@ -136,7 +136,7 @@
                                 <div class="span12">
                                     <div class="row-fluid">
                                         <label class="form-label span4" for="normal">SectionIntroContent</label>
-                                        <input class="span8" id="normalInput" type="text" name="section[SectionIntroContent]" value="<?= (isset($listing)) ? $listing['SectionIntroContent'] : '' ?>" />
+                                        <input class="span8" id="normalInput" type="text" name="section[introContent]" value="<?= (isset($listing)) ? $listing['introContent'] : '' ?>" />
                                     </div>
                                 </div>
                             </div>
@@ -146,7 +146,7 @@
                                 <div class="span12">
                                     <div class="row-fluid">
                                         <label class="form-label span4" for="normal">SectionContent</label>
-                                        <input class="span8" id="normalInput" type="text" name="section[SectionContent]" value="<?= (isset($listing)) ? $listing['SectionContent'] : '' ?>" />
+                                        <input class="span8" id="normalInput" type="text" name="section[content]" value="<?= (isset($listing)) ? $listing['content'] : '' ?>" />
                                     </div>
                                 </div>
                             </div>
@@ -156,7 +156,7 @@
                                 <div class="span12">
                                     <div class="row-fluid">
                                         <label class="form-label span4" for="normal">SectionName</label>
-                                        <input class="span8" id="normalInput" type="text" name="section[SectionName]" value="<?= (isset($listing)) ? $listing['SectionName'] : '' ?>" />
+                                        <input class="span8" id="normalInput" type="text" name="section[name]" value="<?= (isset($listing)) ? $listing['name'] : '' ?>" />
                                     </div>
                                 </div>
                             </div>
@@ -166,7 +166,7 @@
                                 <div class="span12">
                                     <div class="row-fluid">
                                         <label class="form-label span4" for="normal">SectionController</label>
-                                        <input class="span8" id="normalInput" type="text" name="section[SectionController]" value="<?= (isset($listing)) ? $listing['SectionController'] : '' ?>" />
+                                        <input class="span8" id="normalInput" type="text" name="section[controller]" value="<?= (isset($listing)) ? $listing['controller'] : '' ?>" />
                                     </div>
                                 </div>
                             </div>
@@ -176,7 +176,7 @@
                                 <div class="span12">
                                     <div class="row-fluid">
                                         <label class="form-label span4" for="normal">SectionAction</label>
-                                        <input class="span8" id="normalInput" type="text" name="section[SectionAction]" value="<?= (isset($listing)) ? $listing['SectionAction'] : '' ?>" />
+                                        <input class="span8" id="normalInput" type="text" name="section[action]" value="<?= (isset($listing)) ? $listing['action'] : '' ?>" />
                                     </div>
                                 </div>
                             </div>
@@ -186,7 +186,7 @@
                                 <div class="span12">
                                     <div class="row-fluid">
                                         <label class="form-label span4" for="normal">SectionUrl</label>
-                                        <input class="span8" id="normalInput" type="text" name="section[SectionUrl]" value="<?= (isset($listing)) ? $listing['SectionUrl'] : '' ?>" />
+                                        <input class="span8" id="normalInput" type="text" name="section[url]" value="<?= (isset($listing)) ? $listing['url'] : '' ?>" />
                                     </div>
                                 </div>
                             </div>
@@ -206,7 +206,7 @@
                                 <div class="span12">
                                     <div class="row-fluid">
                                         <label class="form-label span4" for="normal">SectionInMenu</label>
-                                        <input class="span8" id="normalInput" type="text" name="section[SectionInMenu]" value="<?= (isset($listing)) ? $listing['SectionInMenu'] : '' ?>" />
+                                        <input class="span8" id="normalInput" type="text" name="section[inMenu]" value="<?= (isset($listing)) ? $listing['inMenu'] : '' ?>" />
                                     </div>
                                 </div>
                             </div>

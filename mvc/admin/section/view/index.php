@@ -118,19 +118,19 @@
                                         <div class='list-item'>
                                             <div class="left col-lg-1 text-center">
                                                 <span class="tabledrag">+</span>
-                                                    <?= $_item['SectionID'] ?>/lv:<a class="table-toggle" href="#"><?= $lavel ?></a>
+                                                    <?= $_item['id'] ?>/lv:<a class="table-toggle" href="#"><?= $lavel ?></a>
                                             </div>
                                             <div class="left col-lg-1 text-center"><?= $_item['UserID'] ?></div>
-                                            <div class="left col-lg-2 text-center"><?= $_item['TimeCreated'] ?></div>
-                                            <div class="left col-lg-2 text-center"><?= $_item['SectionName'] ?></div>
-                                            <div class="left col-lg-1 text-center"><?= $_item['SectionType'] ?></div>
-                                            <div class="left col-lg-2 text-center"><?= $_item['SectionController'] ?>/<?= $_item['SectionAction'] ?></div>
+                                            <div class="left col-lg-2 text-center"><?= $_item['timeCreated'] ?></div>
+                                            <div class="left col-lg-2 text-center"><?= $_item['name'] ?></div>
+                                            <div class="left col-lg-1 text-center"><?= $_item['type'] ?></div>
+                                            <div class="left col-lg-2 text-center"><?= $_item['controller'] ?>/<?= $_item['action'] ?></div>
                                             <div class="left col-lg-1 text-center"><input type="checkbox" name="checkbox" value="all" class="styled" /></div>
                                             <div class="left col-lg-2">
                                                 <div class="controls center">
-                                                    <a href="<?= $this->_getUrl() ?>/manager/method/edit/id/<?= $_item['SectionID'] ?>" 
+                                                    <a href="<?= $this->_getUrl() ?>/manager/method/edit/id/<?= $_item['id'] ?>" 
                                                        title="Редактировать Section" class="tip"><span class="icon12 icomoon-icon-pencil"></span></a>
-                                                    <a class="delete" href="<?= $this->_getUrl() ?>/delete/id/<?= $_item['SectionID'] ?>" title="Удалить Section" class="tip"><span class="icon12 icomoon-icon-remove"></span></a>
+                                                    <a class="delete" href="<?= $this->_getUrl() ?>/delete/id/<?= $_item['id'] ?>" title="Удалить Section" class="tip"><span class="icon12 icomoon-icon-remove"></span></a>
                                                 </div>
                                             </div> 
                                         </div>
