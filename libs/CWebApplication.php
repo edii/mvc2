@@ -360,7 +360,6 @@ class CWebApplication extends \CApplication {
 			$oldController=$this->_controller;
 			$this->_controller=$controller;
 			$controller->init();
-                        echo "action = ".$actionID;
 			$controller->run($actionID);
 			$this->_controller=$oldController;
                         
