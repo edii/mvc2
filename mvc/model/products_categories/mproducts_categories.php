@@ -130,6 +130,28 @@ class Mproducts_categories extends \CDetectedModel { //extends \CDetectedModel
         return (isset($_products) and is_array($_products)) ? $_products : NULL;
     }
     
+    public function getProductsCategoryWhere( Array $where ) {
+        $where_sql = '';
+        if(count($where) > 0) {    
+            foreach($where as $boolen => $_item):
+                $where_sql .= $boolen .' '. $_item['field'] . $_item['symbol'] . $_item['value'];
+            endforeach;
+        }
+        
+        $_products = self::$db -> query("SELECT cat.id as cat_id, 
+                                            cat.parentID as cat_pID, 
+                                            cat.name as cat_name,
+                                            p.*
+                                       FROM {$this->_table_name} as cat 
+                                       INNER JOIN products as p ON p.categoryID = cat.id
+                                       WHERE cat.hidden = 0 {$where_sql}
+                                       ", 
+                                    array('target'=>'main'), // dbselect db 
+                                    array()) ->fetchAll(); // params
+        
+        return (isset($_products) and is_array($_products)) ? $_products : NULL;
+    }
+    
     /**
      * 
      * @param type array $products_categories

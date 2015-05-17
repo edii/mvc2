@@ -171,7 +171,16 @@ ul.list-phones > li > a {
     color: #00a0df;
 }
 
+/* ------ SUBNAV ------- */
+#menu-subnav {
+  border-bottom: 1px solid #d9d9d9;
+  background: #fafafa;
+}
+
 /* -- CONTENT -- */
+.box-content {
+}
+
 .boxSlider { min-height: 272px; }
 .promos {
   background-color: #000;
@@ -208,6 +217,43 @@ ul.list-phones > li > a {
 .promos a.promo-item img {
     width: 50%;
 }
+
+/* !-- breadcrumbs -- */
+.breadcrumbs {
+  padding: 20px 0px;  
+  background: transparent;
+  display: block;
+  overflow: hidden;
+  list-style: none;
+  margin: 0px;
+}
+
+.breadcrumbs li {
+  margin: 0;
+  padding: 0 0.92308em 0 0;
+  float: left;
+}
+.breadcrumbs li:first-child:before { content: " "; }
+.breadcrumbs li:before {
+  content: "/";
+  color: #aaa;
+  position: relative;
+  top: 1px;
+}
+
+.breadcrumbs li:first-child a, 
+.breadcrumbs li:first-child span {
+  padding-left: 0;
+}
+
+.breadcrumbs li a, 
+.breadcrumbs li span {
+  font-size: 0.84615em;
+  padding-left: 0.92308em;
+  text-transform: uppercase;
+  color: #00aeff;
+}
+
 /* -- FOOTER -- */
 footer {
     background-color: #fff; 

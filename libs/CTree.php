@@ -89,4 +89,9 @@ class CTree extends \CApplicationComponent
             return $this->_tree = $this->buildNodes($rootNodes);
         }
         
+        public function getTreeID( $id ) {
+            $rootNodes = $this->getChildren( $id );
+            return $this->_tree = $this->buildNodes($rootNodes);
+        }
+        
 }

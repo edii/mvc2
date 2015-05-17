@@ -92,6 +92,8 @@ class CWebApplication extends \CApplication {
         /* language */
         private $_language;
 
+        /* homepage */
+        private $_homepage = false;
         /**
 	 * Processes the current request.
 	 * It first resolves the request into controller and action,
@@ -119,6 +121,13 @@ class CWebApplication extends \CApplication {
 		$this->runController($route);
 	}
 
+        public function getHomePage() {
+            return $this -> _homepage;
+        }
+        public function setHomePage( $homepage ) {
+            return $this -> _homepage = $homepage; 
+        }
+        
         /**
          * Выгрузка дерева Section
          * return array $_tree_section
@@ -323,6 +332,12 @@ class CWebApplication extends \CApplication {
             return $this->getComponent('CBreadcrumbs');
         }
 
+        public function getCreateBradcrumbs( $links ) {
+            return \init::app() -> getBreadcrumbs() 
+                    -> setLinks( $links ) 
+                    -> createBreadcrumbs();
+            // array('home' => '/', 'section' => 'section')
+        }
 	/**
 	 * @return CTheme the theme used currently. Null if no theme is being used.
 	 */
@@ -401,6 +416,8 @@ class CWebApplication extends \CApplication {
                         if(isset($_section['controller']) and !empty($_section['controller'])) {
                             $_sec_action = (isset($_section['action']) and !empty($_section['action'])) ? $_section['action'] : 'index';
                             $route = $_section['controller'].'/'.$_sec_action; 
+                            if(isset($_section['homepage']) and $_section['homepage'])
+                                $this ->setHomePage( $_section['homepage'] );
                         }
                         // load params
                         if($_params = $this->getTreeParams() and isset($route) and !empty($route)) {
@@ -434,10 +451,6 @@ class CWebApplication extends \CApplication {
                 } else {
                     $route= false; 
                 }
-                
-                
-                
-                
                 
 //                    if(($route=trim($route,'/'))==='')
 //                            $route=$owner->defaultController;
@@ -543,13 +556,13 @@ class CWebApplication extends \CApplication {
                 
             }
             
-            
-            
             $section = $_db -> query( "SELECT id, 
+                                                alias,
                                                  controller, 
                                                  action, 
                                                  url,
-                                                 name
+                                                 name,
+                                                 homepage
                                           FROM section 
                                           WHERE url IN (".$_route.") 
                                                             AND OwnerID = ".$_ownerID."
@@ -582,7 +595,6 @@ class CWebApplication extends \CApplication {
                 
             
         }
-        
         
         protected function getLangs( $_code = false ) {
             $_db = \init::app() -> getDBConnector();
@@ -855,8 +867,6 @@ class CWebApplication extends \CApplication {
              return $_definition;
         }
         
-       
-        
         public function getModels($model = false) {
             
                
@@ -928,6 +938,4 @@ class CWebApplication extends \CApplication {
                 
 	}
         
-        
-       
 }

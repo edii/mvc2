@@ -61,14 +61,9 @@
                 </div> <!-- #logo -->
                 
                 <nav id="main-menu">
-                    
-                    <?php
+                    <?php 
                         $this->getBox('home/menu'); // navigation
                     ?>
-                    
-<!--                    <ul>
-                        <li></li>
-                    </ul>-->
                 </nav> <!-- #main-menu -->
                 
                 <div id="hedare-phones">
@@ -80,8 +75,21 @@
                 </div> <!-- #hedare-phones -->
           </header>
           
-          <div id="content">
-              <?php echo $content; ?>
+          
+          <?php 
+            $this->getBox('home/subnav'); // navigation
+          ?>
+          
+          <div id="content" class="wrapper">
+              
+              <?php if(\init::app() -> getHomePage()): ?>
+                <?php echo $content; ?>
+              <?php else: ?>
+                <div class="container">
+                    <?php echo $content; ?>
+                </div>
+              <?php endif; ?>
+              
           </div>
       </div>
       <!-- FOOTER -->
@@ -153,8 +161,6 @@
             </div>    
           </div>
       </footer>
-      
-        
       
         <!-- popUp -->  
         <div class="box-popUp"></div>

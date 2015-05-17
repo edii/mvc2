@@ -31,6 +31,8 @@ class CController extends \CBaseController
         
         public $_view_global = [];
         
+        public $homepage = false;
+        
 	/**
 	 * @param string $id id of this controller
 	 * @param CWebModule $module the module that this controller belongs to.
@@ -70,8 +72,10 @@ class CController extends \CBaseController
 	}
 
 	public function run($actionID) {
-                
+                // echo __CLASS__." :: run()! ".$this -> layout . $this -> homepage;
             
+                \init::app() -> setHomePage( $this -> homepage );
+                
 		if(($action=$this->createAction($actionID))!==null) {
 			if(($parent=$this->getModule())===null)
 				$parent=\init::app();
@@ -960,6 +964,8 @@ class CController extends \CBaseController
             endif;
         }
         
-        
+        public function homepage( $homepage ) {
+            \init::app() -> setHomePage( $homepage );
+        }
         
 }

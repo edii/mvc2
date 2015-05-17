@@ -487,8 +487,8 @@ abstract class DatabaseConnection extends \PDO {
    *
    * @throws PDOException
    */
-  public function query($query, array $args = array(), $options = array()) {
-
+  public function query($query, $args = array(), $options = array()) {
+    
     // Use default values if not already set.
     $options += $this->defaultOptions();
 
@@ -499,13 +499,15 @@ abstract class DatabaseConnection extends \PDO {
       if ($query instanceof DatabaseStatementInterface) {
         $stmt = $query;
         $stmt->execute(NULL, $options);
-      }
-      else {
+      } else {
+          
         $this->expandArguments($query, $args);
         $stmt = $this->prepareQuery($query);
         $stmt->execute($args, $options);
       }
 
+      
+      
       // Depending on the type of query we may need to return a different value.
       // See DatabaseConnection::defaultOptions() for a description of each
       // value.
@@ -523,6 +525,7 @@ abstract class DatabaseConnection extends \PDO {
       }
     }
     catch (PDOException $e) {
+       
       if ($options['throw_exception']) {
         // Add additional debug information.
         if ($query instanceof DatabaseStatementInterface) {
@@ -2019,7 +2022,7 @@ class DatabaseStatementBase extends PDOStatement implements DatabaseStatementInt
       $query_start = microtime(TRUE);
     }
     
-    // var_dump($args); die('stop');
+    // var_dump($args); // die('stop');
     
     $return = parent::execute($args);
 

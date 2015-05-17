@@ -82,7 +82,7 @@ class Msection extends \CDetectedModel { //extends \CDetectedModel
      * 
      * @param type $attributes
      */
-    public function getSections() {
+    public function getSections( $where = false ) {
         
         $sql = self::$db -> select( $this->_table_name , 'section', array('target' => 'main'))
                          -> fields('section', array('id',
@@ -117,8 +117,17 @@ class Msection extends \CDetectedModel { //extends \CDetectedModel
                                                   'action',
                                                   'view',
                                                   'url',
-                                                  'rout'));
+                                                  'rout',
+                                                  'styleMenu'
+                             ));
         $sql ->condition('hidden', 0, '='); 
+        
+        if(is_array($where)) {
+            foreach ( $where as $_field => $_item ) :
+                $sql ->condition( $_field, $_item['value'], $_item['symbol']);
+            endforeach;
+        }
+        
         $_sections = $sql -> execute()->fetchAll(); 
         
         return $_sections;

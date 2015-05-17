@@ -6,10 +6,15 @@ class HomeController extends \Controller
 
 	private $_model;
         private $_msection = false;
+        
+        private $_pdo;
+        
+        // public $homepage;
 
         public function init() {
             if(empty($this -> _msection))
                $this -> _msection = \init::app() -> getModels('section/msection');
+            $this -> _pdo = \init::app() -> getDBConnector();
         }
         
         /* --- // page content --- */
@@ -17,12 +22,29 @@ class HomeController extends \Controller
             $this->layout( 'smartel' );
             $secID = false;
             if($section = \init::app() -> getTreeSection() and is_array( $section )) {
-                    $secID = $section['SectionId'];
+                    $secID = $section['id'];
             }
+            
+            // breandrumbs
+            $breandcrumbs = false;
+            $sections = \init::app() -> getTreeSections();
+    
+            $breandcrumbs[ 'home' ] = '/';
+            if(is_array($sections) and count($sections) > 0) {
+                foreach( $sections as $section ) :
+                    $breandcrumbs[ $section['name'] ] = '/'.$section['url'];
+                endforeach;
+            }
+            
             $_content = '';
-            if(isset($this -> _msection -> getSectionID( $secID )['SectionContent'])) 
-                $_content = $this -> _msection -> getSectionID( $secID )['SectionContent'];
-            $this->render('content', array('_content' => $_content ));
+            if(isset($this -> _msection -> getSectionID( $secID )['content'])) 
+                $_content = $this -> _msection -> getSectionID( $secID )['content'];
+            
+            $this->render('content', 
+                    array( 
+                        'breandcrumbs' => \init::app() -> getCreateBradcrumbs( $breandcrumbs ), 
+                        '_content' => $_content )
+                    );
         }
         
 	public function actionDB()
@@ -89,6 +111,7 @@ class HomeController extends \Controller
 
 	public function actionIndex()
 	{
+            $this->homepage( true );
             $this->layout( 'smartel' );
             
 //            $_db = new CDatabase( 'main', NULL);
@@ -109,25 +132,99 @@ class HomeController extends \Controller
 ////            die("STOP");
 //            
 //            
-            $this->render('index'); 
+            $this->render('index', array( 'page_home' => true) ); 
 	}
        
         public function actionMenu() {
             
-            $_db = new CDatabase( 'main', NULL);
+            // $_db = new CDatabase( 'main', NULL);
             
             $options['target'] = 'main';   
             $args = array();
              
-            $_connector = $_db->getConnection();
-            $_dbdefionitions = $_db->getDatabaseDefinition();
+            // $_connector = $_db->getConnection();
+            // $_dbdefionitions = $_db->getDatabaseDefinition();
             
-            $front_section = $_connector -> query("SELECT s.id, s.hidden, s.alias, s.inMenu, s.parentID, s.name, "
-                                            . "s.title, s.description, s.keywords, s.url "
-                                            . " FROM `section` AS s WHERE type = 'front'", $args, $options)-> fetchAll();
+            $front_section = $this -> _pdo -> query("SELECT s.id, 
+                                                            s.hidden, 
+                                                            s.alias, 
+                                                            s.inMenu, 
+                                                            s.parentID, 
+                                                            s.name, 
+                                                            s.title, 
+                                                            s.description, 
+                                                            s.keywords, s.url 
+                                                        FROM `section` AS s 
+                                                        WHERE parentID = 0 AND hidden = 0 AND type = 'front'", $args, $options)
+                                -> fetchAll();
             
             $this->render('menu', array(
                 'front_section'=>$front_section,
+                'sections_actual' => \init::app()->getTreeSection(),
+            ));
+        }
+        
+        // Sub-navigation
+        public function subnavStaticPage() {
+            $this->render('menu_subnavStaticPage');
+        }
+        
+        public function actionSubnav() { 
+            $options['target'] = 'main';   
+            $args = array();
+            $secID = false;
+            if($section = \init::app() -> getTreeSection() and is_array( $section )) {
+                    $secID = $section['id'];
+            }
+            
+//            echo "<pre>";
+//            var_dump( 
+//                    \init::app() -> getParams('styleMenu'),
+//                    \init::app() -> getRequest() -> getParam('styleMenu') ); 
+//            echo "</pre>";
+            
+            $parenID = false;
+            if($_sections = \init::app() -> getTreeSections() and is_array($_sections)) {
+                $parenID = array_shift( $_sections )['id'];
+            }
+            
+            if(!$parenID) return NULL;
+            
+            $_items = array();
+            $_sections = $this -> _msection -> getSections(
+                                array(
+                                    // 'parentID' => ['value' => (int)$parenID, 'symbol' => '='],
+                                    'type' => ['value' => 'front', 'symbol' => '='],
+                                    ));
+            if(is_array($_sections) and count($_sections) > 0) {
+                foreach($_sections as $_key => $_element) :
+                    $_items[$_key] = (array)$_element;
+                endforeach;
+            }
+            
+            $_tree = \init::app() -> getCTree()
+                    -> set( $_items, array('id' => 'id', 'p_id' => 'parentID') ) 
+                    -> getTreeID( (int)$parenID );
+            
+//             echo "<pre>";
+//             var_dump($_tree);
+//             echo "</pre>";
+            
+            // $sections = $this -> _pdo -> query("SELECT s.id, 
+            //                                                s.hidden, 
+            //                                                s.alias, 
+            //                                                s.inMenu, 
+            //                                                s.parentID, 
+            //                                                s.name, 
+            //                                                s.title, 
+            //                                                s.description, 
+            //                                                s.keywords, s.url 
+            //                                            FROM `section` AS s 
+            //                                            WHERE parentID = {$secID} AND hidden = 0 AND type = 'front'", $args, $options)
+            //                    -> fetchAll();
+            
+            return $this->renderView('menu_subnav', array(
+                'sections'=>$_tree,
                 'sections_actual' => \init::app()->getTreeSection(),
             ));
         }

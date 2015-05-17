@@ -1139,6 +1139,7 @@ EOD;
 	 */
 	public static function normalizeUrl($url)
 	{
+            
 		if(is_array($url))
 		{
 			if(isset($url[0]))
