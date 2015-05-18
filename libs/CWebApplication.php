@@ -565,7 +565,7 @@ class CWebApplication extends \CApplication {
                                                  homepage
                                           FROM section 
                                           WHERE url IN (".$_route.") 
-                                                            AND OwnerID = ".$_ownerID."
+                                                            AND OwnerID = ".(int)$_ownerID."
                                                             AND type = '".$_type."'    
                                                             AND hidden = 0" ) -> fetchAll(); 
             

@@ -33,7 +33,7 @@ return [
                 'driver' => 'mysql',
                 'database' => 'mvc2',
                 'username' => 'root',
-                'password' => '',
+                'password' => 'password',
                 'host' => 'localhost',
                 'prefix' => '',
             ],
