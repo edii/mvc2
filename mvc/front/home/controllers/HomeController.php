@@ -50,8 +50,6 @@ class HomeController extends \Controller
 	public function actionDB()
 	{
             
-            
-            
             // \init::app()->setTheme( false );
             
             // connect db from controlers
@@ -114,35 +112,14 @@ class HomeController extends \Controller
             $this->homepage( true );
             $this->layout( 'smartel' );
             
-//            $_db = new CDatabase( 'main', NULL);
-//            
-//            $options['target'] = 'main';   
-//            $args = array();
-//             
-//            $_connector = $_db->getConnection();
-//            $_dbdefionitions = $_db->getDatabaseDefinition();
-//            
-//            $front_section = $_connector -> query("SELECT s.SectionID, s.hidden, s.SectionAlias, s.SectionInMenu, s.SectionParentID, s.SectionName, s.SectionTitle, s.SectionDescription, s.SectionKeywords, s.SectionUrl "
-//                                            . " FROM `section` AS s WHERE SectionType = 'front'", $args, $options)-> fetchAll();
-//            
-//            
-////            echo '<pre>';
-////            var_dump($front_section);
-////            echo '</pre>';
-////            die("STOP");
-//            
-//            
             $this->render('index', array( 'page_home' => true) ); 
 	}
        
         public function actionMenu() {
             
-            // $_db = new CDatabase( 'main', NULL);
-            
             $options['target'] = 'main';   
             $args = array();
              
-            // $_connector = $_db->getConnection();
             // $_dbdefionitions = $_db->getDatabaseDefinition();
             
             $front_section = $this -> _pdo -> query("SELECT s.id, 
@@ -155,7 +132,10 @@ class HomeController extends \Controller
                                                             s.description, 
                                                             s.keywords, s.url 
                                                         FROM `section` AS s 
-                                                        WHERE parentID = 0 AND hidden = 0 AND type = 'front'", $args, $options)
+                                                        WHERE parentID = 0
+                                                        AND inMenu = 1
+                                                        AND hidden = 0 
+                                                        AND type = 'front'", $args, $options)
                                 -> fetchAll();
             
             $this->render('menu', array(
@@ -177,11 +157,6 @@ class HomeController extends \Controller
                     $secID = $section['id'];
             }
             
-//            echo "<pre>";
-//            var_dump( 
-//                    \init::app() -> getParams('styleMenu'),
-//                    \init::app() -> getRequest() -> getParam('styleMenu') ); 
-//            echo "</pre>";
             
             $parenID = false;
             if($_sections = \init::app() -> getTreeSections() and is_array($_sections)) {
@@ -194,6 +169,7 @@ class HomeController extends \Controller
             $_sections = $this -> _msection -> getSections(
                                 array(
                                     // 'parentID' => ['value' => (int)$parenID, 'symbol' => '='],
+                                    'inMenu' => ['value' => 1, 'symbol' => '='],
                                     'type' => ['value' => 'front', 'symbol' => '='],
                                     ));
             if(is_array($_sections) and count($_sections) > 0) {
@@ -205,23 +181,6 @@ class HomeController extends \Controller
             $_tree = \init::app() -> getCTree()
                     -> set( $_items, array('id' => 'id', 'p_id' => 'parentID') ) 
                     -> getTreeID( (int)$parenID );
-            
-//             echo "<pre>";
-//             var_dump($_tree);
-//             echo "</pre>";
-            
-            // $sections = $this -> _pdo -> query("SELECT s.id, 
-            //                                                s.hidden, 
-            //                                                s.alias, 
-            //                                                s.inMenu, 
-            //                                                s.parentID, 
-            //                                                s.name, 
-            //                                                s.title, 
-            //                                                s.description, 
-            //                                                s.keywords, s.url 
-            //                                            FROM `section` AS s 
-            //                                            WHERE parentID = {$secID} AND hidden = 0 AND type = 'front'", $args, $options)
-            //                    -> fetchAll();
             
             return $this->renderView('menu_subnav', array(
                 'sections'=>$_tree,
