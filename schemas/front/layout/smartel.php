@@ -172,6 +172,8 @@
         
         <!-- filters -->
         <script src="/style/front/js/scroll.js"></script>
+        <!-- products -->
+        <script src="/style/front/js/products.js"></script>
         <script src="/style/front/js/init.js"></script>
   </body>
 </html>

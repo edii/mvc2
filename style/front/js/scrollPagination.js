@@ -84,7 +84,7 @@
                                 $settings._sort = (state) ? state.activeSort.replace(/^sort:/, '') : $settings._sort;
                                 
                                 console.log( $settings.data );
-				$.post('/modules/mod_ajax/ajax.php', {
+				$.post('/shop/ajax/', {
                                     
                                         number        : $settings.nop,
                                         offset        : offset,
@@ -116,14 +116,17 @@
 						
                                             if(html) {
                                                 $.each(html, function(key, value) {
-                                                    var _el = value._html;
-//                                                    var _el = $('<li></li>')
-//                                                    .attr({ "data-sort" : value._id })
-//                                                    .attr({"data-category": value._category})
-//                                                    .addClass("mix")
-//                                                    .addClass('manufacture-'+value._category)
-//                                                    .html( value._id );
-                                                      //$this.find( $settings.append ).append(_el);
+                                                    // var _el = value._html;
+                                                    // 
+                                                    var _el = $('<li></li>')
+                                                    .attr({ "data-sort" : value._id })
+                                                    .attr({"data-category": value._category})
+                                                    .addClass("mix")
+                                                    .addClass('manufacture-'+value._category)
+                                                    .html( value._id );
+                                                    $this.find( $settings.append ).append(_el);
+                                                      
+                                                    /*  
                                                     if($this.mixItUp('isLoaded')) {  
                                                         $this.find( $settings.append ).append(_el);
                                                         // $this.mixItUp('append', value._id, _el, {filter: $filterActive, sort: $settings._sort}); // {filter: 'all'}
@@ -152,6 +155,9 @@
                                                                 _activeFilter: 'all',
                                                             });
                                                     }
+                                                    */
+                                                    
+                                                    
                                                     // $('#SandBox').append(mixDiv);
                                                 });
                                                 //$this.mixItUp('update_targets');
