@@ -95,6 +95,7 @@ class ProductsCategoryController extends \Controller
                     'title'   => $_title,
                     'sections_actual' => \init::app()->getTreeSection(),
                     'listing'   => $this -> _mproducts_categories -> getCategoryID($_id),
+                    '_sections' => $this -> _msection -> getSections( ['type' => array('value' => 'front', 'symbol' => '=')] ),
                     '_categories' => $this -> _mproducts_categories -> getCategoriesTree(false),
                     'validate'  => $validate,
                     '_session'  =>  $this -> _users -> getValidate() -> getSession()

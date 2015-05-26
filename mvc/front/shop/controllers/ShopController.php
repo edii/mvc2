@@ -55,16 +55,23 @@ class ShopController extends \Controller
        public function actionAjax() 
        {
            $this->layout( false );
-           $_arr = array(
-               array('_id'=> 1, '_category' => 1),
-               array('_id'=> 2, '_category' => 2),
-               array('_id'=> 3, '_category' => 3),
-               array('_id'=> 4, '_category' => 4),
-               array('_id'=> 5, '_category' => 5),
-               array('_id'=> 6, '_category' => 6),
-               array('_id'=> 7, '_category' => 7),
-           );
-           echo json_encode($_arr);
+           if( \init::app() -> getRequest() -> getIsAjaxRequest() ) {
+               $_arr = array(
+                   'result' => array(
+                       array('_id'=> 1, '_category' => 1),
+                       array('_id'=> 2, '_category' => 2),
+                       array('_id'=> 3, '_category' => 3),
+                       array('_id'=> 4, '_category' => 4),
+                       array('_id'=> 5, '_category' => 5),
+                       array('_id'=> 6, '_category' => 6),
+                       array('_id'=> 7, '_category' => 7),
+                  )     
+               );
+               // echo json_encode($_arr);
+               header('Content-Type: application/json');
+               echo json_encode($_arr, JSON_PRETTY_PRINT);
+           }
+           
        }        
         
 }

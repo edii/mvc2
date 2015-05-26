@@ -25,7 +25,14 @@
 <div class='box-category-products' data-load-category-id="1">
     <ul id="box-list-products" 
         class="large-block-grid-4 products-grid box-filter-content">
-            </ul> 
+        <li class="mix manufacture-1" data-sort="1" data-category="1">1</li>
+        <li class="mix manufacture-2" data-sort="2" data-category="2">2</li>
+        <li class="mix manufacture-3" data-sort="3" data-category="3">3</li>
+        <li class="mix manufacture-4" data-sort="4" data-category="4">4</li>
+        <li class="mix manufacture-5" data-sort="5" data-category="5">5</li>
+        <li class="mix manufacture-6" data-sort="6" data-category="6">6</li>
+        <li class="mix manufacture-7" data-sort="7" data-category="7">7</li>
+    </ul> 
     <div class="gap"></div>
     <div class='loading-bar'></div>
 </div> 

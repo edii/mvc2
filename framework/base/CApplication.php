@@ -641,7 +641,13 @@ abstract class CApplication extends \CModule
 	}
 
         
-        
+         /**
+         * CJson
+         * 
+         */
+//        public function getJson() {
+//            return $this -> getComponent( 'CJSON' );
+//        } 
         
         /**
          * CSession
@@ -1127,7 +1133,9 @@ abstract class CApplication extends \CModule
                                 'class' => 'COwner'
                         ),
                     
-                    
+//                        'CJSON' => array(
+//                                'class' => 'CJSON'
+//                        ),
                     
 		);
 

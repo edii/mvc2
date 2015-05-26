@@ -103,7 +103,9 @@
                                         } else {
                                             html = data;
                                         }
-
+                                        
+                                        // console.log( data );
+                                                
 					$this.find('.loading-bar').html($initmessage);
 						
 					if(html == "" 
@@ -111,11 +113,14 @@
                                                 || typeof html == 'undefined') { 
                                                 $this.find('.loading-bar').hide();
 					} else {
-						
+                                             //console.log( 'Start!' );
 					    offset = offset+$settings.nop; 
 						
                                             if(html) {
                                                 $.each(html, function(key, value) {
+                                                    
+                                                    // console.log( key, value );
+                                                    
                                                     // var _el = value._html;
                                                     // 
                                                     var _el = $('<li></li>')

@@ -117,6 +117,26 @@
                                 </div>
                             </div>
                             
+                            <?php
+//                                echo "<per>";
+//                                var_dump( $_sections );
+//                                echo "</pre>";
+                            ?>
+                            <!-- SectionID -->
+                            <div class="form-row row-fluid">
+                                <div class="span12">
+                                    <div class="row-fluid">
+                                        <label class="form-label span4" for="normal">SectionID</label>
+                                        <select name="category[SectionID]">
+                                            <option value="0"> -- Root SectionID -- </option>
+                                            <?php foreach($_sections as $section): ?>
+                                                <option value="<?= $section -> id ?>"> <?= $section -> name ?> </option>
+                                            <?php endforeach; ?>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            
                             
 <!--                            <div class="form-row row-fluid">
                                 <div class="span12">
