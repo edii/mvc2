@@ -1,0 +1,25 @@
+.operators {
+    position: absolute;
+    display: block;
+    width: 22px;
+    height: 22px;
+    background-position: center center;
+}
+.kiyv {
+  background-image: url('../image/operators/icon_kievstar.png');
+  background-repeat: no-repeat;
+  
+/*  background-position: 183px 0px;*/
+}
+
+.life {
+  background-image: url('../image/operators/icon_life.png');
+  background-repeat: no-repeat;
+/*  background-position: 186px 0px;*/
+}
+
+.mts {
+  background-image: url('../image/operators/icon_MTC.png');
+  background-repeat: no-repeat;
+/*  background-position: 186px 2px;*/
+}   

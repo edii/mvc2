@@ -43,9 +43,9 @@ class ShopController extends \Controller
                                         'symbol' => '='])
                     ); 
             
-            echo "<pre>";
-            var_dump( $products );
-            echo "</pre>";
+//            echo "<pre>";
+//            var_dump( $products );
+//            echo "</pre>";
             
             $this->render('productList', array());
             

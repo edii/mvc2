@@ -1,4 +1,4 @@
-<?php
+    <?php
 
 /*
  * model Input
@@ -68,7 +68,7 @@ class Msection extends \CDetectedModel { //extends \CDetectedModel
                                                   'action',
                                                   'view',
                                                   'url',
-                                                  'rout'));
+                                                  'rout', 'styleMenu'));
             $sql ->condition('hidden', 0, '=') 
                  ->condition('id', (int)$_id, '='); 
             $_sections = $sql -> execute()->fetchAssoc(); 

@@ -130,12 +130,14 @@ class HomeController extends \Controller
                                                             s.name, 
                                                             s.title, 
                                                             s.description, 
-                                                            s.keywords, s.url 
+                                                            s.keywords, s.url, s.styleMenu 
                                                         FROM `section` AS s 
                                                         WHERE parentID = 0
-                                                        AND inMenu = 1
-                                                        AND hidden = 0 
-                                                        AND type = 'front'", $args, $options)
+                                                            AND inMenu = 1
+                                                            AND hidden = 0 
+                                                            AND type = 'front'
+                                                        ORDER BY `position` ASC    
+                                                        ", $args, $options)
                                 -> fetchAll();
             
             $this->render('menu', array(
@@ -181,6 +183,8 @@ class HomeController extends \Controller
             $_tree = \init::app() -> getCTree()
                     -> set( $_items, array('id' => 'id', 'p_id' => 'parentID') ) 
                     -> getTreeID( (int)$parenID );
+            
+//            echo "<pre>"; var_dump( $_tree ); echo "</pre>"; die('stop');
             
             return $this->renderView('menu_subnav', array(
                 'sections'=>$_tree,

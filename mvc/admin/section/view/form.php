@@ -210,6 +210,33 @@
                                     </div>
                                 </div>
                             </div>
+                                
+                            <div class="form-row row-fluid">
+                                <div class="span12">
+                                    <div class="row-fluid">
+                                        <label class="form-label span4" for="normal">SectionPosition</label>
+                                        <input class="span8" id="normalInput" type="text" name="section[position]" value="<?= (isset($listing)) ? $listing['position'] : '' ?>" />
+                                    </div>
+                                </div>
+                            </div>    
+                                
+                            <div class="form-row row-fluid">
+                                <div class="span12">
+                                    <div class="row-fluid">
+                                        <label class="form-label span4" for="normal">SectionStyleMenu</label>
+                                        <select name="section[styleMenu]">
+                                            <option value="0"> -- Select StyleMenu -- </option>
+                                            <option value="first">First</option>
+                                            <option value="secondery">Secondery</option>
+                                        </select>
+<!--                                        <input class="span8" 
+                                               id="normalInput" 
+                                               type="text" 
+                                               name="section[styleMenu]" 
+                                               value="<?= (isset($listing)) ? $listing['styleMenu'] : '' ?>" />-->
+                                    </div>
+                                </div>
+                            </div>    
                              
         
                             <div class="form-actions">

@@ -26,6 +26,7 @@
     <link href="/style/front/css/nivoSlider/nivo-slider.css" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="/style/front/css/front.css" rel="stylesheet">
+    <link href="/style/front/css/settings.css" rel="stylesheet">
 
     <script src="/style/front/js/jquery/jquery.v2.1.3.js"></script>
     <script src="/style/front/js/jquery/jquery.migrate.js"></script>
@@ -67,10 +68,10 @@
                 </nav> <!-- #main-menu -->
                 
                 <div id="hedare-phones">
-                    <a href="#">+3(8068)808-72-97<span>(Киев)</span></a>
+                    <a href="#"><i class="operators kiyv"></i>+3(8068)808-72-97<span>(Киев)</span></a>
                     <ul class="list-phones">
-                        <li class="first"><a href="#">+3(8068)808-72-97<span>(Донецк)</span></a></li>
-                        <li class="first"><a href="#">+3(8068)808-72-97<span>(Ужгород)</span></a></li>
+                        <li class="first"><i class="operators life"></i><a href="#">+3(8068)808-72-97<span>(Донецк)</span></a></li>
+                        <li class="first"><i class="operators mts"></i><a href="#">+3(8068)808-72-97<span>(Ужгород)</span></a></li>
                     </ul>
                 </div> <!-- #hedare-phones -->
           </header>
