@@ -11,6 +11,8 @@ class ShopController extends \Controller
         private $_mproducts = false;
         private $_mproducts_categories = false;
 
+        private $_request;
+        
         public function init() {
             if(empty($this -> _msection))
                $this -> _msection = \init::app() -> getModels('section/msection');
@@ -20,6 +22,7 @@ class ShopController extends \Controller
                $this -> _mproducts_categories = \init::app() -> getModels('products_categories/mproducts_categories');
         
            $this -> _pdo = \init::app() -> getDBConnector();
+           $this -> _request = \init::app() -> getRequest() -> getParams();
         }
         
         /* --- // page content --- */
@@ -29,25 +32,32 @@ class ShopController extends \Controller
             $secID = false; 
             $secAlies = false;
             $secUrl = false;
-            
+           
             if($section = \init::app() -> getTreeSection() and is_array( $section )) {
                 $secID = $section['id'];
                 $secAlies = $section['alias'];
                 $secUrl = $section['url'];
             }
             
-            $products = array();
-            $products = $this -> _mproducts_categories -> getProductsCategoryWhere( 
-                        array('AND' => ['field' => 'cat.alias', 
-                                        'value' => $this -> _pdo -> quote( $secAlies ), 
-                                        'symbol' => '='])
-                    ); 
+            if(is_array($this -> _request) and count($this -> _request) > 0) {
+                $productAlias = array_keys( $this -> _request )[0]; 
+                // echo "Alias = ".$productAlias;
+                $this->render('product', 
+                                array(
+                                    'product' => $this -> _mproducts -> getProductAlias( $productAlias ), 
+                                    'BaseUrl' => $secUrl
+                                ));
+            } else if($secAlies) {
             
-//            echo "<pre>";
-//            var_dump( $products );
-//            echo "</pre>";
-            
-            $this->render('productList', array());
+                $products = array();
+                $products = $this -> _mproducts_categories -> getProductsCategoryWhere( 
+                            array('AND' => ['field' => 'cat.alias', 
+                                            'value' => $this -> _pdo -> quote( $secAlies ), 
+                                            'symbol' => '='])
+                        );
+                $this->render('productList', array('products' => $products, 'BaseUrl' => $secUrl));    
+            } else 
+                $this -> redirect('/404');
             
 	}
         

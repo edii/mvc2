@@ -93,6 +93,18 @@
                                 </div>
                             </div>
                             
+                            <!-- Tags -->
+                            <div class="form-row row-fluid">
+                                <div class="span12">
+                                    <div class="row-fluid">
+                                        <label class="form-label span4" for="tags">Tags</label>
+                                        <div class="span8 controls">
+                                            <input id="tags" type="text" value="awesome,nice" style="width:100%;" />
+                                        </div>
+                                    </div>
+                                </div>  
+                            </div>
+                            
                             <!-- CategoryID -->
                             <div class="form-row row-fluid">
                                 <div class="span12">
@@ -185,7 +197,13 @@
                                 <div class="span12">
                                     <div class="row-fluid">
                                         <label class="form-label span4" for="textarea">Description</label>
-                                        <textarea class="span8" id="textarea" name="product[description]" rows="3"><?= (isset($listing['description'])) ? $listing['description'] : '' ?></textarea>
+<!--                                        <textarea class="span8" id="textarea" name="product[description]" rows="3">
+                                            <?= (isset($listing['description'])) ? $listing['description'] : '' ?>
+                                        </textarea>-->
+                                        
+                                        <textarea class="tinymce" name="product[description]">
+                                            <?= (isset($listing['description'])) ? $listing['description'] : '' ?>
+                                        </textarea>
                                     </div>
                                 </div>
 
@@ -225,6 +243,114 @@
 
                 </div>
                   
+                
+                <!-- GALLARY -->
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            
+                            <div class="form-row row-fluid">
+                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                    
+                                    <input id="input-files" 
+                                           name="files[]" 
+                                           type="file" 
+                                           multiple 
+                                           class="file-loading">
+                                    <script>
+                                    $("#input-files").fileinput({
+                                        uploadUrl: "/<?= _request_uri ?>/files/uploadImages", // server upload action
+                                        uploadAsync: true,
+                                        maxFileCount: 5
+                                    });
+                                    
+                                        $('#input-files').on('fileuploaded', function(event, data, previewId, index) {
+                                            var form = data.form, files = data.files, extra = data.extra,
+                                                response = data.response, reader = data.reader;
+                                            console.log('File uploaded triggered');
+                                            
+                                                $('#input-files').fileinput('reset');
+                                                $('#input-files').fileinput('clear');
+                                        });
+                                    
+//                                        $('#input-files').on('filepreupload', function(event, data, previewId, index) {
+//                                            var form = data.form, files = data.files, extra = data.extra,
+//                                                response = data.response, reader = data.reader;
+//                                            console.log('File pre upload triggered');
+//                                        });
+                                    
+                                    </script>  
+                                    
+                                    
+<!--                                    <div class="row-fluid">
+                                        <label class="form-label span4" for="textarea">File input</label>
+                                        <input type="file" name="fileinput" id="file" />
+                                    </div>-->
+                                </div> 
+<!--                                <div class="col-lg-4 col-md-4 col-sm-4"> 
+                                    <div class="forms-button">
+                                       <button type="submit" class="btn btn-default">Upload Image</button>
+                                    </div>
+                                </div>-->
+                            </div>
+                            
+                            
+                        </div>    
+                    </div>
+                    <div class="row-fluid">
+                        <div class="span6">
+                            <div class="page-header">
+                                <h4>Gallery View <small>with pagination</small></h4>
+                            </div>
+
+                            <!-- item container -->
+                            <ul id="itemContainer" class="galleryView center">
+                                <li>
+                                    <a href="images/gallery/1.jpg" rel="prettyPhoto" title="Title for image">
+                                        <img src="images/gallery/preload.png" data-original="images/gallery/thumbnails/1.jpg" alt="Image name">
+                                    </a>
+                                    <div class="actionBtn">
+                                        <a href="#" class="edit"><span class="icon16 icomoon-icon-pencil-2 white"></span></a>
+                                        <a href="#" class="delete"><span class="icon16 icomoon-icon-cancel-4 white"></span></a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <a href="images/gallery/2.jpg" rel="prettyPhoto" title="Title for image">
+                                        <img src="images/gallery/preload.png" data-original="images/gallery/thumbnails/2.jpg" alt="Image name">
+                                    </a>
+                                    <div class="actionBtn">
+                                        <a href="#" class="edit"><span class="icon16 icomoon-icon-pencil-2 white"></span></a>
+                                        <a href="#" class="delete"><span class="icon16 icomoon-icon-cancel-4 white"></span></a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <a href="images/gallery/3.jpg" rel="prettyPhoto" title="Title for image">
+                                        <img src="images/gallery/preload.png" data-original="images/gallery/thumbnails/3.jpg" alt="Image name">
+                                    </a>
+                                    <div class="actionBtn">
+                                        <a href="#" class="edit"><span class="icon16 icomoon-icon-pencil-2 white"></span></a>
+                                        <a href="#" class="delete"><span class="icon16 icomoon-icon-cancel-4 white"></span></a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <a href="images/gallery/20.jpg" rel="prettyPhoto" title="Title for image">
+                                        <img src="images/gallery/preload.png" data-original="images/gallery/thumbnails/20.jpg" alt="Image name">
+                                    </a>
+                                    <div class="actionBtn">
+                                        <a href="#" class="edit"><span class="icon16 icomoon-icon-pencil-2 white"></span></a>
+                                        <a href="#" class="delete"><span class="icon16 icomoon-icon-cancel-4 white"></span></a>
+                                    </div>
+                                </li>
+                            </ul>
+
+                             <!-- navigation holder -->
+                             <div class="center">
+                                <div class="holder"></div>
+                             </div>
+
+                        </div><!-- End .span6 -->
+                </div>
+                
             </div>  
             
         </form>    

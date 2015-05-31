@@ -28,6 +28,8 @@
     <link href="/style/front/css/front.css" rel="stylesheet">
     <link href="/style/front/css/settings.css" rel="stylesheet">
 
+    <link href="/style/front/css/products.css" rel="stylesheet">
+    
     <script src="/style/front/js/jquery/jquery.v2.1.3.js"></script>
     <script src="/style/front/js/jquery/jquery.migrate.js"></script>
     <script src="/style/front/js/jquery/jquery.form.js"></script>

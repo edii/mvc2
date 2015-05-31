@@ -237,11 +237,23 @@ class CWebApplication extends \CApplication {
 			'CBreadcrumbs'=>array(
                             'class'=>'CBreadcrumbs',
 			),
+                    
+                       // CUploadedFile
+                        'CUploadedFile'=>array(
+                            'class'=>'CUploadedFile',
+			),
                        
 		);
 
 		$this->setComponents($components);
 	}
+        
+        /**
+         * return CUploadedFile (array)
+         */
+        public function getCUploadedFile() {
+            return $this->getComponent( 'CUploadedFile' );
+        }
         
         /**
          * return CLanguage (array)

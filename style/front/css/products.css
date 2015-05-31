@@ -1,0 +1,39 @@
+#box-products,
+#box-product {
+    padding: 30px 0px;
+}
+
+/* ------------ // Item product ------------- */
+.detail-title {
+  font-size: 2.76923em;
+  margin-right: 12%;
+}
+
+.detail-code {
+    background-color: #fff3b5;
+    color: #999;
+    padding: 0.38462em 0.38462em 0.15385em;
+    right: 0;
+    top: -0.23077em;
+}
+
+.pos-fix {
+    position: relative;
+}
+
+.pos-abs {
+    position: absolute;
+}
+
+.detail-code-i {
+    color: #333;
+    font-size: 1.5em;
+}
+
+.block {
+    display: block !important;
+}
+
+.detail-main-col {
+  padding-bottom: 1em;
+}

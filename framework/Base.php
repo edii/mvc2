@@ -667,7 +667,8 @@ class Base
                 // helpers
                 'CHtml'                 => '/libs/helpers/CHtml.php',
 //                'CJSON'                 => '/libs/helpers/CJSON.php',
-		
+                // 
+		'CUploadedFile'                  => '/libs/CUploadedFile.php',
 	);
 }
 

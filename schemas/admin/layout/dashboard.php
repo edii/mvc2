@@ -53,10 +53,16 @@
 
     <!--[if IE 8]><link href="/style/admin/css/ie8.css" rel="stylesheet" type="text/css" /><![endif]-->
     
+    <!-- bootstrap files -->
+    <link href="/style/admin/css/bootstrap_file/fileinput.css" rel="stylesheet" type="text/css" />
+    
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
 <!--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>-->
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
     <script type="text/javascript" src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    
+    <!-- BOOTSTRAP FILES -->
+    <script type="text/javascript" src="/style/admin/js/bootstrap_file/fileinput.js"></script>
     
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -182,10 +188,20 @@
     <script type="text/javascript" src="/style/admin/plugins/forms/uniform/jquery.uniform.min.js"></script>
     
     <!-- Init plugins -->
+    
     <script type="text/javascript" src="/style/admin/js/main.js"></script><!-- Core js functions -->
     <script type="text/javascript" src="/style/admin/js/dashboard.js"></script><!-- Init plugins only for page -->
     
-   
+<!--    <script type="text/javascript" src="/style/admin/js/jquery/jquery.timeentry.js"></script>-->
+    <script type="text/javascript" src="/style/admin/js/jquery/jquery.toggleButtons.js"></script>
+    <script type="text/javascript" src="/style/admin/js/jquery/jquery.elastic.source.js"></script>
+    <script type="text/javascript" src="/style/admin/js/jquery/jquery.mask.js"></script>
+    
+    <!-- TinyMCE -->
+<!--    <script type="text/javascript" src="/style/admin/js/tinymce/tinymce.min.js"></script>-->
+    <script type="text/javascript" src="/style/admin/js/tinymce/jquery.tinymce.min.js"></script>
+    
+    <script type="text/javascript" src="/style/admin/js/forms.js"></script>
     
     <!-- Error -->
     <script type="text/javascript" src="/style/admin/js/error.js"></script><!-- Error js functions -->

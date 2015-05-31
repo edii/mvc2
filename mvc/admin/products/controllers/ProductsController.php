@@ -26,6 +26,7 @@ class ProductsController extends \Controller
         
         public function actionIndex() {
         }
+        
         public function actionList() {
             
             $_lang = \init::app() -> getLanguage();
@@ -45,6 +46,7 @@ class ProductsController extends \Controller
 //                '_lang' => $_lang
 //            ));
         }
+        
         public function actionManager() {
             $this->layout( false );
             // update info
@@ -102,6 +104,7 @@ class ProductsController extends \Controller
                  $this ->redirect('/'._request_uri.'/error/404/');
             }
         }
+        
         public function actionDelete(){ 
             $this->layout( false );
      

@@ -50,6 +50,30 @@ class Mproducts extends \CDetectedModel { //extends \CDetectedModel
     }
     
     /**
+     * getPdoductAlias
+     * @param type $_alias
+     * @return type array product
+     */
+    public function getProductAlias( $_alias ) {
+        $_product = false;
+        if(!empty($_alias)) {
+            $sql = self::$db -> select( $this->_table_name , 'p', array('target' => 'main'))
+                         -> fields('p', array('id',
+                                              'alias',
+                                              'UserID', 'OwnerID', 'hidden', 'timeCreated', 'timeSaved',
+                                              'categoryID', 'extraCategoryID', 'name', 'code', 'price',
+                                              'description', 'metaTitle', 'metaDescription', 'metaKeywords',
+                                              'icon'));
+            $sql ->condition('hidden', 0, '=') 
+                 ->condition('alias', $_alias, '='); 
+            $_product = $sql -> execute()->fetchAssoc(); 
+            
+        } 
+         
+        return $_product;
+    }
+    
+    /**
      * 
      * @param type array $products
      */

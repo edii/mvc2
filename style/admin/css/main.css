@@ -3848,3 +3848,15 @@ ul.unstyled, ol.unstyled {
 .p10 {
     padding: 10px;
 }
+
+ul#itemContainer {
+    list-style: outside none none;
+    margin: 0;
+    padding: 0;
+}
+
+ul#itemContainer li {
+    display: inline-block;
+    margin: 5px;
+    position: relative;
+}
